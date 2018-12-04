@@ -1,0 +1,45 @@
+#!/usr/bin/python3
+
+import json
+import os
+import sys
+
+import requests
+
+
+def get_dashboard(filename):
+    """Get the dashboard stored in `filename`"""
+    with open(filename) as f:
+        return json.load(f)
+
+
+def upload_dashboard(grafana_uri, token, folder_id, dashboard,
+                     **extra_data):
+    dashboard_upload_uri = grafana_uri + '/api/dashboards/db'
+
+    data = {
+        'dashboard': dashboard,
+        'folderId': folder_id,
+    }
+
+    data.update(extra_data)
+
+    print(data.keys())
+
+    r = requests.post(
+        dashboard_upload_uri,
+        headers={'Authorization': 'Bearer %s' % token},
+        json=data,
+    )
+
+    return r
+
+
+if __name__ == '__main__':
+    GRAFANA_URI = 'https://grafana.softwareheritage.org'
+    TOKEN = os.environ.get('GRAFANA_TOKEN')
+
+    dashboard = get_dashboard(sys.argv[1])
+    print(dashboard)
+    r = upload_dashboard(GRAFANA_URI, TOKEN, 0, dashboard, overwrite=True)
+    print(r.status_code, r.json())
