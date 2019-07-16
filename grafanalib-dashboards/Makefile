@@ -1,6 +1,7 @@
 # Generate json dashboards
 
 TARGETS= \
+	 grafanalib.cpu.temperatures.json	\
 	 grafanalib.cpu.usage.json		\
 	 grafanalib.disk.iops.json		\
 	 grafanalib.disk.latency.json		\
