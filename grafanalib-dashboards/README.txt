@@ -1,7 +1,7 @@
-Task: Grafana dashboards
-========================
+Grafana dashboards
+==================
 
-Goal: replace munin graphs
+These are meant to replace traditional Munin graphs
 
 
 1. Grafanalib installation
