@@ -1,0 +1,9 @@
+Package: swh-grafanalib-dashboards
+Version: 1.0
+Section: admin
+Priority: optional
+Architecture: all
+Depends: grafana (>= 6.4.4)
+Maintainer: Software Heritage Developers <swh-devel@inria.fr>
+Description: Software Heritage auto-generated Grafana dashboards
+ These are intended to replace Munin dashboards
